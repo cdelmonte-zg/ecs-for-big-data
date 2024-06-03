@@ -6,7 +6,7 @@ import concurrent.futures
 import gc
 import random
 import matplotlib
-matplotlib.use('Agg')  # Use the Agg backend to avoid issues with Tkinter
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import argparse
 import psutil
@@ -87,41 +87,41 @@ def load_module(module_name, module_path):
     spec.loader.exec_module(module)
     return module
 
-def run_ecs_test(transaction_data, user_profiles):
+def run_ecs_oop_test(transaction_data, user_profiles):
     try:
-        ecs_solution = load_module('ecs_solution', 'modules_in_test/ecs_solution.py').ecs_solution
-        logging.debug("Starting ECS Solution test")
-        result = ecs_solution(transaction_data, user_profiles)
-        logging.debug(f"ECS Solution result: {result}")
-        assert result is not None, "ECS Solution returned None"
+        ecs_oop_solution = load_module('ecs_oop_solution', 'solutions_in_test/ecs_oop_solution.py').ecs_oop_solution
+        logging.debug("Starting ECS-OOP Solution test")
+        result = ecs_oop_solution(transaction_data, user_profiles)
+        logging.debug(f"ECS-OOP Solution result: {result}")
+        assert result is not None, "ECS-OOP Solution returned None"
         return result
     except Exception as e:
-        logging.error(f"Error in ECS Solution test: {e}")
+        logging.error(f"Error in ECS-OOP Solution test: {e}")
         return None
 
-def run_functional_test(transaction_data, user_profiles):
+def run_ecs_functional_test(transaction_data, user_profiles):
     try:
-        functional_solution = load_module('functional_solution', 'modules_in_test/functional_solution.py').functional_solution
-        logging.debug("Starting Functional Solution test")
-        result = functional_solution(transaction_data, user_profiles)
-        logging.debug(f"Functional Solution result: {result}")
-        assert result is not None, "Functional Solution returned None"
+        ecs_functional_solution = load_module('ecs_functional_solution', 'solutions_in_test/ecs_functional_solution.py').ecs_functional_solution
+        logging.debug("Starting ECS-Functional Solution test")
+        result = ecs_functional_solution(transaction_data, user_profiles)
+        logging.debug(f"ECS-Functional Solution result: {result}")
+        assert result is not None, "ECS-Functional Solution returned None"
         return result
     except Exception as e:
-        logging.error(f"Error in Functional Solution test: {e}")
+        logging.error(f"Error in ECS-Functional Solution test: {e}")
         return None
 
-def run_visitordom_test(transaction_data, user_profiles):
+def run_visitor_dom_test(transaction_data, user_profiles):
     try:
-        VisitorDom = load_module('visitor_dom_solution', 'modules_in_test/visitor_dom_solution.py').VisitorDom
-        logging.debug("Starting VisitorDom Solution test")
+        VisitorDom = load_module('visitor_dom_solution', 'solutions_in_test/visitor_dom_solution.py').VisitorDom
+        logging.debug("Starting Visitor-Dom Solution test")
         visitor_dom = VisitorDom(transaction_data, user_profiles)
         result = visitor_dom.combined_solution()
-        logging.debug(f"VisitorDom Solution result: {result}")
-        assert result is not None, "VisitorDom Solution returned None"
+        logging.debug(f"Visitor-Dom Solution result: {result}")
+        assert result is not None, "Visitor-Dom Solution returned None"
         return result
     except Exception as e:
-        logging.error(f"Error in VisitorDom Solution test: {e}")
+        logging.error(f"Error in Visitor-Dom Solution test: {e}")
         return None
 
 def run_test_in_process(test_function, transaction_data, user_profiles, verbose, memory_limit):
@@ -177,9 +177,9 @@ def main(repetitions=5, verbose=True, test_data_sizes=[1000, 10000, 100000], mem
 
     # Run radon analysis once for each solution
     solutions = [
-        ("ECS Solution", 'modules_in_test/ecs_solution.py'),
-        ("Functional Solution", 'modules_in_test/functional_solution.py'),
-        ("VisitorDom Solution", 'modules_in_test/visitor_dom_solution.py')
+        ("ECS-OOP Solution", 'solutions_in_test/ecs_oop_solution.py'),
+        ("ECS-Functional Solution", 'solutions_in_test/ecs_functional_solution.py'),
+        ("Visitor-Dom Solution", 'solutions_in_test/visitor_dom_solution.py')
     ]
 
     timestamp = strftime("%Y%m%d-%H%M%S")
@@ -193,9 +193,9 @@ def main(repetitions=5, verbose=True, test_data_sizes=[1000, 10000, 100000], mem
         transaction_data, user_profiles = generate_test_data(size)
 
         tests = [
-            (run_ecs_test, transaction_data, user_profiles, "ECS Solution"),
-            (run_functional_test, transaction_data, user_profiles, "Functional Solution"),
-            (run_visitordom_test, transaction_data, user_profiles, "VisitorDom Solution")
+            (run_ecs_oop_test, transaction_data, user_profiles, "ECS-OOP Solution"),
+            (run_ecs_functional_test, transaction_data, user_profiles, "ECS-Functional Solution"),
+            (run_visitor_dom_test, transaction_data, user_profiles, "Visitor-Dom Solution")
         ]
 
         all_results = {label: [] for _, _, _, label in tests}
@@ -270,7 +270,7 @@ def main(repetitions=5, verbose=True, test_data_sizes=[1000, 10000, 100000], mem
     plt.title('Comparison of Average Execution Time of Solutions for Different Data Sizes')
     plt.xticks(positions + bar_width * (len(all_results_agg) - 1) / 2, labels)
     plt.legend()
-    plt.savefig('images/histogram_all_{timestamp}.png')
+    plt.savefig(f'images/histogram_{timestamp}_all.png')
     plt.close()
 
     # Create bar chart for all tests (memory usage)
@@ -286,7 +286,7 @@ def main(repetitions=5, verbose=True, test_data_sizes=[1000, 10000, 100000], mem
     plt.title('Comparison of Average Memory Usage of Solutions for Different Data Sizes')
     plt.xticks(positions + bar_width * (len(memory_usages_agg) - 1) / 2, labels)
     plt.legend()
-    plt.savefig('images/memory_usage_all_{timestamp}.png')
+    plt.savefig(f'images/memory_usage_{timestamp}_all.png')
     plt.close()
 
     # Save results and system info to a text file with timestamp

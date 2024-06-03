@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from typing import List, Tuple
 
 
-def ecs_solution(transaction_data, user_profiles):
+def ecs_oop_solution(transaction_data, user_profiles):
     class Entity:
         def __init__(self, entity_id):
             self.entity_id = entity_id

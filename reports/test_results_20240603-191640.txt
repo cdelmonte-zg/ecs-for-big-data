@@ -1,0 +1,100 @@
+System Information:
+System: Linux
+Node Name: terra
+Release: 6.5.0-35-generic
+Version: #35~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue May  7 09:00:52 UTC 2
+Machine: x86_64
+Processor: x86_64
+CPU Cores: 16
+Logical CPUs: 32
+Total Memory (GB): 125.00385284423828
+Available Memory (GB): 116.83014297485352
+Memory Usage (%): 6.5
+Disk Total (GB): 1831.714111328125
+Disk Used (GB): 189.5241813659668
+Disk Free (GB): 1549.073574066162
+Disk Usage (%): 10.9
+RAM Speed: 4800 MT/s
+GPU: NVIDIA GeForce RTX 4090
+
+Test Parameters:
+Repetitions: 5
+Test Data Sizes: [10, 100, 1000]
+Memory Limit (MB): 4000000000
+Max Workers: 4
+
+Complexity results for ECS-OOP Solution:
+Cyclomatic Complexity:
+solutions_in_test/ecs_oop_solution.py
+    F 7:0 ecs_oop_solution - A
+
+Average Cyclomatic Complexity:
+solutions_in_test/ecs_oop_solution.py
+    F 7:0 ecs_oop_solution - A
+
+1 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.0)
+
+
+Complexity results for ECS-Functional Solution:
+Cyclomatic Complexity:
+solutions_in_test/ecs_functional_solution.py
+    F 6:0 ecs_functional_solution - A
+
+Average Cyclomatic Complexity:
+solutions_in_test/ecs_functional_solution.py
+    F 6:0 ecs_functional_solution - A
+
+1 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.0)
+
+
+Complexity results for Visitor-Dom Solution:
+Cyclomatic Complexity:
+solutions_in_test/visitor_dom_solution.py
+    C 7:0 VisitorDom - A
+    M 8:4 VisitorDom.__init__ - A
+    M 16:4 VisitorDom.combined_solution - A
+
+Average Cyclomatic Complexity:
+solutions_in_test/visitor_dom_solution.py
+    C 7:0 VisitorDom - A
+    M 8:4 VisitorDom.__init__ - A
+    M 16:4 VisitorDom.combined_solution - A
+
+3 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.3333333333333333)
+
+
+Average Execution Time (s) for each data size:
+Data Size 10:
+ECS-OOP Solution: 0.3398687606008025
+ECS-Functional Solution: 0.32970774300047195
+Visitor-Dom Solution: 0.3483852665987797
+
+Data Size 100:
+ECS-OOP Solution: 0.3398836295993533
+ECS-Functional Solution: 0.34255015840462877
+Visitor-Dom Solution: 0.4463873809989309
+
+Data Size 1000:
+ECS-OOP Solution: 0.39492473139835055
+ECS-Functional Solution: 0.3979503144015325
+Visitor-Dom Solution: 1.4064466441981494
+
+Average Memory Usage (MB) for each data size:
+Data Size 10:
+ECS-OOP Solution: 334.85078125
+ECS-Functional Solution: 334.09140625
+Visitor-Dom Solution: 334.53984375
+
+Data Size 100:
+ECS-OOP Solution: 335.6796875
+ECS-Functional Solution: 335.5171875
+Visitor-Dom Solution: 336.01328125
+
+Data Size 1000:
+ECS-OOP Solution: 338.39453125
+ECS-Functional Solution: 337.25390625
+Visitor-Dom Solution: 338.43125
+
