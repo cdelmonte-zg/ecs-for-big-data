@@ -1,0 +1,100 @@
+System Information:
+System: Linux
+Node Name: terra
+Release: 6.5.0-35-generic
+Version: #35~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue May  7 09:00:52 UTC 2
+Machine: x86_64
+Processor: x86_64
+CPU Cores: 16
+Logical CPUs: 32
+Total Memory (GB): 125.00385284423828
+Available Memory (GB): 114.15802001953125
+Memory Usage (%): 8.7
+Disk Total (GB): 1831.714111328125
+Disk Used (GB): 189.56492614746094
+Disk Free (GB): 1549.032829284668
+Disk Usage (%): 10.9
+RAM Speed: 4800 MT/s
+GPU: NVIDIA GeForce RTX 4090
+
+Test Parameters:
+Repetitions: 5
+Test Data Sizes: [90000, 120000, 150000]
+Memory Limit (MB): 400000000
+Max Workers: 4
+
+Complexity results for ECS Solution:
+Cyclomatic Complexity:
+modules_in_test/ecs_solution.py
+    F 7:0 ecs_solution - A
+
+Average Cyclomatic Complexity:
+modules_in_test/ecs_solution.py
+    F 7:0 ecs_solution - A
+
+1 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.0)
+
+
+Complexity results for Functional Solution:
+Cyclomatic Complexity:
+modules_in_test/functional_solution.py
+    F 6:0 functional_solution - A
+
+Average Cyclomatic Complexity:
+modules_in_test/functional_solution.py
+    F 6:0 functional_solution - A
+
+1 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.0)
+
+
+Complexity results for VisitorDom Solution:
+Cyclomatic Complexity:
+modules_in_test/visitor_dom_solution.py
+    C 7:0 VisitorDom - A
+    M 8:4 VisitorDom.__init__ - A
+    M 16:4 VisitorDom.combined_solution - A
+
+Average Cyclomatic Complexity:
+modules_in_test/visitor_dom_solution.py
+    C 7:0 VisitorDom - A
+    M 8:4 VisitorDom.__init__ - A
+    M 16:4 VisitorDom.combined_solution - A
+
+3 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.3333333333333333)
+
+
+Average Execution Time (s) for each data size:
+Data Size 90000:
+ECS Solution: 8.512052014000073
+Functional Solution: 7.587712003600609
+VisitorDom Solution: 100.60403220520092
+
+Data Size 120000:
+ECS Solution: 12.205851970800722
+Functional Solution: 11.218477158798487
+VisitorDom Solution: 135.4189542246022
+
+Data Size 150000:
+ECS Solution: 16.639775823403035
+Functional Solution: 15.148979203999625
+VisitorDom Solution: 170.52215839959825
+
+Average Memory Usage (MB) for each data size:
+Data Size 90000:
+ECS Solution: 508.92265625
+Functional Solution: 496.14140625
+VisitorDom Solution: 518.5609375
+
+Data Size 120000:
+ECS Solution: 570.1515625
+Functional Solution: 548.40390625
+VisitorDom Solution: 582.04453125
+
+Data Size 150000:
+ECS Solution: 625.39140625
+Functional Solution: 601.9296875
+VisitorDom Solution: 638.56171875
+
